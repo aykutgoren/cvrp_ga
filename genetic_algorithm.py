@@ -1,9 +1,18 @@
 # ----------------------------------------------------------------------------
 # This module includes Genetic Algorithm class for CVRP.
-# Chromosome representation is composed of 2 parts. First part includes
-# job ids in genes and second part includes vehicles by gene order.
-
-#                        Genetic Algorithm process:
+# Chromosome representation is composed of 2 parts. First part is job part, which includes
+# job ids in genes and second part is vehicle part, which includes vehicles by gene order.
+#
+# Example:
+# chromosome -> 1324567322
+# job part -> 1324567
+# vehicle part -> 322
+# First vehicle route -> 132
+# Second vehicle route -> 45
+# Third vehicle route -> 67
+#
+#           Genetic Algorithm process:
+#
 # 1. Initialize population
 # 2. Fitness calculation
 # 3. Selection
@@ -79,8 +88,8 @@ class GeneticAlgorithm:
             for i in range(self.number_of_vehicles):
                 route_cost = 0
                 if chromosome[len(self.jobs) + i] > 0:
-                    vehicle_id = list(self.vehicles)[i]
-                    vehicle_location = self.vehicles[vehicle_id][0]  # Assuming
+                    vehicle_id = list(self.vehicles)[i] # Vehicle ids are mapped to chromosome vehicle part in order
+                    vehicle_location = self.vehicles[vehicle_id][0]
                     route_locations = map_route_to_route_locations(vehicle_location, routes[i], self.jobs)
                     route_cost = calculate_route_cost(route_locations, routes[i], self.jobs, self.matrix)
                     penalty = self.__penalty(vehicle_id, routes[i])

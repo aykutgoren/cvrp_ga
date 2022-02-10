@@ -90,7 +90,7 @@ def map_chromosome_to_json_dictionary(chromosome, number_of_jobs, vehicles, cost
     routes = [list(route) for route in routes]  # Converted to list for json dump
     route_costs = []
     for route in routes:
-        vehicle_id = list(vehicles)[routes.index(route)]  # Assuming
+        vehicle_id = list(vehicles)[routes.index(route)] # Vehicle ids are mapped to chromosome vehicle part in order
         vehicle_location = vehicles[vehicle_id][0]
 
         route_locations = map_route_to_route_locations(vehicle_location, route, jobs)
