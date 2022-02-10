@@ -1,5 +1,6 @@
 # ----------------------------------------------------------------------------
-# This module checks, reads and writes Json file.
+# This module includes JsonParser class, which has static methods to check,
+# read and write Json file.
 #
 # (C) Aykut Goren, 2022
 # ----------------------------------------------------------------------------
